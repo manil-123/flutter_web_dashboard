@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hero_dashboard_web/widgets/login_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -43,14 +44,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.white,
               ),
             ),
-            SizedBox(
-              height: 12,
-            ),
             Text(
               'Enter your details to login to your account:',
               style: TextStyle(
                 fontSize: 14.sp,
-                color: Colors.white.withOpacity(0.5),
+                color: Colors.white.withOpacity(0.4),
               ),
             ),
             SizedBox(
@@ -58,24 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.3,
-              child: TextFormField(
+              child: LoginTextFormField(
                 controller: _userNameController,
-                decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  hintText: "Email",
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                ),
+                hint: "Email",
               ),
             ),
             SizedBox(
@@ -83,26 +66,25 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.3,
-              child: TextFormField(
+              child: LoginTextFormField(
                 controller: _passwordController,
-                decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
-                  hintText: "Password",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                ),
+                hint: "Password",
+                isPassword: true,
               ),
             ),
+            SizedBox(
+              height: 16,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.1,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(16),
+                ),
+                onPressed: () {},
+                child: Text('Sign In'),
+              ),
+            )
           ],
         ),
       ),
