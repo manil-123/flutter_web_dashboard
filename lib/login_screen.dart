@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hero_dashboard_web/widgets/login_text_field.dart';
+import 'package:hero_dashboard_web/widgets/on_hover_button.dart';
+import 'package:hero_dashboard_web/widgets/on_hover_text.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,66 +28,73 @@ class _LoginScreenState extends State<LoginScreen> {
             fit: BoxFit.fill,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 100.h,
-              width: MediaQuery.of(context).size.width * 0.23,
-              child: Image.asset('assets/images/fsc_hero.png'),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            Text(
-              'HERO FSC',
-              style: TextStyle(
-                fontSize: 22.sp,
-                color: Colors.white,
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 100.h,
+                width: MediaQuery.of(context).size.width * 0.23,
+                child: Image.asset('assets/images/fsc_hero.png'),
               ),
-            ),
-            Text(
-              'Enter your details to login to your account:',
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: Colors.white.withOpacity(0.4),
+              SizedBox(
+                height: 16,
               ),
-            ),
-            SizedBox(
-              height: 24,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.3,
-              child: LoginTextFormField(
-                controller: _userNameController,
-                hint: "Email",
-              ),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.3,
-              child: LoginTextFormField(
-                controller: _passwordController,
-                hint: "Password",
-                isPassword: true,
-              ),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.1,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(16),
+              OnHoverText(
+                child: Text(
+                  'HERO FSC',
+                  style: TextStyle(
+                    fontSize: 22.sp,
+                    color: Colors.white,
+                  ),
                 ),
-                onPressed: () {},
-                child: Text('Sign In'),
               ),
-            )
-          ],
+              Text(
+                'Enter your details to login to your account:',
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: Colors.white.withOpacity(0.4),
+                ),
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.3,
+                child: LoginTextFormField(
+                  controller: _userNameController,
+                  hint: "Email",
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.3,
+                child: LoginTextFormField(
+                  controller: _passwordController,
+                  hint: "Password",
+                  isPassword: true,
+                ),
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.1,
+                child: OnHoverButton(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.all(16),
+                    ),
+                    onPressed: () {},
+                    child: Text('Sign In'),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
