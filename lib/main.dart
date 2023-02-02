@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hero_dashboard_web/login_screen.dart';
+import 'package:hero_dashboard_web/screens/dashboard_screen.dart';
+import 'package:hero_dashboard_web/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,8 +24,12 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primaryColor: Color(0xFF1E1E2D),
               textTheme: GoogleFonts.poppinsTextTheme(
-                Theme.of(context).textTheme,
+                Theme.of(context).textTheme.apply(bodyColor: Colors.white),
               ),
+              appBarTheme: AppBarTheme(
+                backgroundColor: Color(0xFF1E1E2D),
+              ),
+              scaffoldBackgroundColor: Color(0xFF1E1E2D),
             ),
             home: const LoginScreen(),
           );

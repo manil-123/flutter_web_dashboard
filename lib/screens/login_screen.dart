@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hero_dashboard_web/screens/dashboard_screen.dart';
 import 'package:hero_dashboard_web/widgets/login_text_field.dart';
 import 'package:hero_dashboard_web/widgets/on_hover_button.dart';
 import 'package:hero_dashboard_web/widgets/on_hover_text.dart';
@@ -41,13 +42,11 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 16,
               ),
-              OnHoverText(
-                child: Text(
-                  'HERO FSC',
-                  style: TextStyle(
-                    fontSize: 22.sp,
-                    color: Colors.white,
-                  ),
+              Text(
+                'HERO FSC',
+                style: TextStyle(
+                  fontSize: 22.sp,
+                  color: Colors.white,
                 ),
               ),
               Text(
@@ -88,7 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.all(16),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DashboardScreen()),
+                          (route) => true);
+                    },
                     child: Text('Sign In'),
                   ),
                 ),

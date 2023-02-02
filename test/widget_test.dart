@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hero_dashboard_web/login_screen.dart';
+import 'package:hero_dashboard_web/screens/login_screen.dart';
 
 void main() {
   testWidgets('Web dashboard login', (WidgetTester tester) async {
@@ -15,7 +15,6 @@ void main() {
     await tester.pumpWidget(MaterialApp(home: LoginScreen()));
 
     // Verify that title text is HERO FSC.
-    expect(find.text('Enter your details to login to your account:'),
-        findsOneWidget);
+    expect(find.text('HERO FSC'), findsOneWidget);
   });
 }
