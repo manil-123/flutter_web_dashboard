@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(1366, 657),
+        splitScreenMode: true,
+        minTextAdapt: true,
         builder: (context, child) {
           return MaterialApp(
             title: 'HERO FSC',
