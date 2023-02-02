@@ -4,6 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hero_dashboard_web/global_value.dart';
 
 Drawer appDrawer(BuildContext context, Function updateIndex) {
+  void updateScreenIndex(int index) {
+    screenIndex = index;
+    updateIndex();
+    Navigator.pop(context);
+  }
+
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
@@ -20,22 +26,16 @@ Drawer appDrawer(BuildContext context, Function updateIndex) {
           ),
         ),
         _drawerMenu(FontAwesomeIcons.users, "Users", () {
-          screenIndex = 0;
-          updateIndex();
-          Navigator.pop(context);
+          updateScreenIndex(0);
         }),
         _drawerMenu(FontAwesomeIcons.users, "Teams", () {
-          updateIndex();
-          screenIndex = 1;
-          Navigator.pop(context);
+          updateScreenIndex(1);
         }),
         _drawerMenu(FontAwesomeIcons.users, "Add Post", () {
-          updateIndex();
-          screenIndex = 2;
-          Navigator.pop(context);
+          updateScreenIndex(2);
         }),
         _drawerMenu(FontAwesomeIcons.arrowRightFromBracket, "Log Out", () {
-          Navigator.pop(context);
+          updateScreenIndex(0);
           Navigator.pop(context);
         }),
       ],
@@ -58,6 +58,7 @@ Widget _drawerMenu(IconData iconData, String title, Function() onTap) {
             title,
             style: TextStyle(
               fontSize: 20.sp,
+              color: Colors.black,
             ),
           ),
         ],

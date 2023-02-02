@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hero_dashboard_web/global_value.dart';
 
 class UsersListScreen extends StatefulWidget {
   const UsersListScreen({super.key});
@@ -10,48 +11,51 @@ class UsersListScreen extends StatefulWidget {
 class _UsersListScreenState extends State<UsersListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+        padding: EdgeInsets.all(16),
         child: ListView(children: <Widget>[
-      Center(
-          child: Text(
-        'People-Chart',
-        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-      )),
-      DataTable(
-        columns: const [
-          DataColumn(
-              label: Text('ID',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-          DataColumn(
-              label: Text('Name',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-          DataColumn(
-              label: Text('Profession',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-        ],
-        rows: const [
-          DataRow(cells: [
-            DataCell(Text('1')),
-            DataCell(Text('Stephen')),
-            DataCell(Text('Actor')),
-          ]),
-          DataRow(cells: [
-            DataCell(Text('5')),
-            DataCell(Text('John')),
-            DataCell(Text('Student')),
-          ]),
-          DataRow(cells: [
-            DataCell(Text('10')),
-            DataCell(Text('Harry')),
-            DataCell(Text('Leader')),
-          ]),
-          DataRow(cells: [
-            DataCell(Text('15')),
-            DataCell(Text('Peter')),
-            DataCell(Text('Scientist')),
-          ]),
-        ],
-      ),
-    ]));
+          Center(
+              child: Text(
+            'App Users List',
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          )),
+          SizedBox(
+            height: 16,
+          ),
+          DataTable(
+              border: TableBorder(
+                borderRadius: BorderRadius.circular(2),
+                top: BorderSide(width: 1, color: Colors.white),
+                right: BorderSide(width: 1, color: Colors.white),
+                bottom: BorderSide(width: 1, color: Colors.white),
+                left: BorderSide(width: 1, color: Colors.white),
+                horizontalInside: BorderSide(width: 1, color: Colors.white),
+                verticalInside: BorderSide(width: 1, color: Colors.white),
+              ),
+              columns: [
+                _dataColumn('Id'),
+                _dataColumn('First Name'),
+                _dataColumn('Last Name'),
+                _dataColumn('Email'),
+                _dataColumn('FCM Token'),
+                _dataColumn('Is VIP'),
+              ],
+              rows: usersList
+                  .map((element) => DataRow(cells: <DataCell>[
+                        DataCell(Text(element.id!)),
+                        DataCell(Text(element.firstName!)),
+                        DataCell(Text(element.lastName!)),
+                        DataCell(Text(element.email!)),
+                        DataCell(Text(element.fcmToken!)),
+                        DataCell(Text(element.isVip!.toString())),
+                      ]))
+                  .toList()),
+        ]));
+  }
+
+  DataColumn _dataColumn(String title) {
+    return DataColumn(
+        label: Text(title,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)));
   }
 }
