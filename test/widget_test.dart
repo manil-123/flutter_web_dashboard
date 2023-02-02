@@ -15,6 +15,7 @@ void main() {
     await tester.pumpWidget(MaterialApp(home: LoginScreen()));
 
     // Verify that title text is HERO FSC.
-    expect(find.text('HERO FSC'), findsOneWidget);
+    expect(find.text('Enter your details to login to your account:'),
+        findsOneWidget);
   });
 }
