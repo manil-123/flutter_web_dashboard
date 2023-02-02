@@ -1,94 +1,15 @@
 import 'package:hero_dashboard_web/models/user_data_model.dart';
+import 'package:hero_dashboard_web/utils/random_token_generator.dart';
 
 int screenIndex = 0;
 
-final usersList = <UserDataModel>[
-  UserDataModel(
-    id: "1",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "2",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "3",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "4",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "5",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "6",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "7",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "8",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "9",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "10",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-  UserDataModel(
-    id: "11",
-    firstName: "Manil",
-    lastName: "Pun",
-    email: "mak@gmail.com",
-    fcmToken: "eadasasdasdasd",
-    isVip: false,
-  ),
-];
+final usersList = List.generate(
+    200,
+    (index) => UserDataModel(
+          id: "1",
+          firstName: "Manil",
+          lastName: "Pun",
+          email: "mak@gmail.com",
+          fcmToken: getRandomToken(15),
+          isVip: false,
+        ));

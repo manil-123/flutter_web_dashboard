@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hero_dashboard_web/global_value.dart';
+import 'package:hero_dashboard_web/screens/user_detail_screen.dart';
+import 'package:hero_dashboard_web/utils/data_table_source.dart';
 
 class UsersListScreen extends StatefulWidget {
   const UsersListScreen({super.key});
@@ -9,6 +11,26 @@ class UsersListScreen extends StatefulWidget {
 }
 
 class _UsersListScreenState extends State<UsersListScreen> {
+  DataTableSource? _dataTableSource;
+
+  void _navigateToDetailScreen(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => UserDetailScreen(
+          userData: usersList[index],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _dataTableSource =
+        MyDataSource(usersList: usersList, onPressed: _navigateToDetailScreen);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,16 +44,20 @@ class _UsersListScreenState extends State<UsersListScreen> {
           SizedBox(
             height: 16,
           ),
-          DataTable(
-              border: TableBorder(
-                borderRadius: BorderRadius.circular(2),
-                top: BorderSide(width: 1, color: Colors.white),
-                right: BorderSide(width: 1, color: Colors.white),
-                bottom: BorderSide(width: 1, color: Colors.white),
-                left: BorderSide(width: 1, color: Colors.white),
-                horizontalInside: BorderSide(width: 1, color: Colors.white),
-                verticalInside: BorderSide(width: 1, color: Colors.white),
+          Theme(
+            data: Theme.of(context).copyWith(
+              dividerColor: Colors.white,
+              cardColor: Color(0xFF1E1E2D),
+              dataTableTheme: DataTableThemeData(
+                dataTextStyle: TextStyle(
+                  color: Colors.white,
+                ),
               ),
+              textTheme:
+                  Theme.of(context).textTheme.apply(displayColor: Colors.white),
+            ),
+            child: PaginatedDataTable(
+              source: _dataTableSource!,
               columns: [
                 _dataColumn('Id'),
                 _dataColumn('First Name'),
@@ -39,17 +65,15 @@ class _UsersListScreenState extends State<UsersListScreen> {
                 _dataColumn('Email'),
                 _dataColumn('FCM Token'),
                 _dataColumn('Is VIP'),
+                _dataColumn(''),
               ],
-              rows: usersList
-                  .map((element) => DataRow(cells: <DataCell>[
-                        DataCell(Text(element.id!)),
-                        DataCell(Text(element.firstName!)),
-                        DataCell(Text(element.lastName!)),
-                        DataCell(Text(element.email!)),
-                        DataCell(Text(element.fcmToken!)),
-                        DataCell(Text(element.isVip!.toString())),
-                      ]))
-                  .toList()),
+              columnSpacing: 100,
+              horizontalMargin: 10,
+              rowsPerPage: 10,
+              showCheckboxColumn: false,
+              arrowHeadColor: Colors.white,
+            ),
+          ),
         ]));
   }
 
